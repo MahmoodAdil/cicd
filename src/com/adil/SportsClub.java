@@ -2,6 +2,9 @@ package com.adil;
 
 public class SportsClub {
 	public static int calculateFee(int age, int memberYear){
+		/*
+		 * comments added for git commit*/
+		String tester = "this string test jenkins";
 		int fee = 0;
 		if ((age < 6) || (age > 65) || (memberYear < 0) || (memberYear > 59) ){
 			System.out.println("NOT VALID");
