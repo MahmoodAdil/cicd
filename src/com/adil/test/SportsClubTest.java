@@ -14,10 +14,15 @@ public class SportsClubTest {
 	public Object[][] createData() {
 		return new Object[][] {
 			// testNum, age, memberYear, expected output
-			{ "T1",5,-1,0},
-			{ "T2",20,3,300},
-			{ "T3",20,5,270},
-			{ "T4",70,60,0},
+			{ "T1",5,3,0},//age < 6
+			{ "T2",70,3,0},//age > 65
+			{ "T3",20,-1,0},//memberYear < 0
+			{ "T4",20,60,0},//memberYear > 59
+			/*
+			 * { "T5",20,3,300},//memberYear <= 3
+			 * { "T6",20,5,270},//memberYear <= 3 False
+			 */
+			
 	
 		};
 	}
