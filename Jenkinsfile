@@ -3,7 +3,7 @@ pipeline {
     parameters {
         string(name: 'SL_USERNAME', defaultValue: '', description: 'Softlayer username')
         password(name: 'SL_API_KEY', defaultValue: 'SECRET', description: 'Softlayer API key')
-        booleanParam(name: 'SL_VIRTUAL_GUEST', defaultValue: true, description: 'Tell to the job when is being run on a VM or a Baremetal. (By default unset means VSI -- Virtual Machine)')
+        booleanParam(name: 'SL_VIRTUAL_GUEST', defaultValue: false, description: 'Tell to the job when is being run on a VM or a Baremetal. (By default unset means VSI -- Virtual Machine)')
         
     }
     stages {
