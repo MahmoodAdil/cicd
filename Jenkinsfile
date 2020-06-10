@@ -1,17 +1,19 @@
 pipeline {
-    agent {
-        docker { image 'golang'
-               }
-    }
+    agent none
+    
     stages {
         stage ('Initialize') {
+            agent { docker 'maven:3-alpine' } 
             steps {
-                    sh 'go -version'
+                echo 'Hello, Maven'
+                sh 'mvn --version'
             }
         }
         stage('Build') {
+            agent { docker 'openjdk:8-jre' } 
             steps {
-                echo 'Building..'
+                echo 'Hello, JDK'
+                sh 'java -version'
             }
         }
         stage('Test') {
