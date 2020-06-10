@@ -11,6 +11,7 @@ pipeline {
             steps {
                 echo "Hello ${params.SL_USERNAME}"
                 echo "Password: ${params.SL_API_KEY}"
+                echo "hostnames: ${params.hostnames.txt}"
             }
         }
     }
