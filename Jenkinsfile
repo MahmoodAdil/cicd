@@ -1,5 +1,5 @@
 pipeline {
-    agent any
+    agent none
     environment {
        first_path = get_first()
    }
