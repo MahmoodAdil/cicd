@@ -1,5 +1,9 @@
 pipeline {
     agent any
+    node {
+    currentBuild.displayName = "fooName"
+    currentBuild.description = "fooDescription"
+    }
     parameters {
         string(name: 'SL_USERNAME', defaultValue: '', description: 'Softlayer username')
         password(name: 'SL_API_KEY', defaultValue: 'SECRET', description: 'Softlayer API key')
