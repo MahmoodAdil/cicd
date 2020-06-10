@@ -7,10 +7,16 @@ pipeline {
         file(name: 'hostnames.txt', description: 'hostnames file')
     }
     stages {
-        stage('Example') {
+        stage ('Initialize') {
             steps {
-                echo "Hello ${params.SL_USERNAME}"
-                echo "Password: ${params.SL_API_KEY}"
+                    echo 'Initializing..'
+                    echo "Hello ${params.SL_USERNAME}"
+                    echo "Password: ${params.SL_API_KEY}"
+            }
+        }
+        stage('Build') {
+            steps {
+                echo 'Building..'
             }
         }
     }
