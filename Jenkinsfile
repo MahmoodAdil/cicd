@@ -1,8 +1,5 @@
 pipeline {
-    agent none
-    environment {
-       first_path = get_first()
-   }
+    agent any
     
     parameters {
         string(name: 'SL_USERNAME', defaultValue: '', description: 'Softlayer username')
@@ -13,11 +10,9 @@ pipeline {
     stages {
         stage ('Initialize') {
             steps {
-                    agent { label 'master' }
                     echo 'Initializing..'
                     echo "Hello ${params.SL_USERNAME}"
                     echo "Password: ${params.SL_API_KEY}"
-                    print(env.first_path)
             }
         }
         stage('Build') {
@@ -25,11 +20,5 @@ pipeline {
                 echo 'Building..'
             }
         }
-    }
-}
-
-def get_first() {
-    node('master') {
-        return env.PATH.split(':')[0]
     }
 }
