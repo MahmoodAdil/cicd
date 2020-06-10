@@ -13,6 +13,7 @@ pipeline {
                     echo 'Initializing..'
                     echo "Hello ${params.SL_USERNAME}"
                     echo "Password: ${params.SL_API_KEY}"
+                    echo "The build number is ${env.BUILD_NUMBER}"
             }
         }
         stage('Build') {
