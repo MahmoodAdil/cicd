@@ -1,6 +1,7 @@
 pipeline {
     agent {
         docker { image 'node:7-alpine' }
+        docker { image 'golang' }
     }
     stages {
         stage ('Initialize') {
@@ -11,7 +12,7 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building..'
-                sh 'mvn --version'
+                sh 'go -version'
             }
         }
         stage('Test') {
