@@ -10,10 +10,6 @@ pipeline {
     stages {
         stage ('Initialize') {
             steps {
-                script {
-                    currentBuild.displayName = "The name."
-                    currentBuild.description = "The best description."
-                }
                     echo 'Initializing..'
                     echo "Hello ${params.SL_USERNAME}"
                     echo "Password: ${params.SL_API_KEY}"
