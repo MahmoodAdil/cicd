@@ -1,0 +1,45 @@
+pipeline {
+    agent any
+    
+    parameters{
+            string(defaultValue: '', description: 'Softlayer username', name: 'SL_USERNAME', trim: false) 
+            password(defaultValue: '', description: 'Softlayer API key', name: 'SL_API_KEY')
+            booleanParam(defaultValue: false, description: 'Tell to the job when is being run on a VM or a Baremetal. By default unset means VSI -- Virtual Machine', name: 'SL_VIRTUAL_GUEST') 
+            file(description: 'hostnames file', name: 'hostnames')
+   }
+    stages {
+        stage ('Initialize') {
+            environment {
+                DISPLAYNAME = "BOOTSTRAP_Temp"
+            }
+            steps {
+                script {
+                    currentBuild.displayName = "${env.DISPLAYNAME}-#${env.BUILD_NUMBER}"
+                    currentBuild.description = ""
+                    }
+                    echo 'Initializing..'
+                    echo "Hello ${params.SL_USERNAME}"
+                    echo "parm hostnames: ${params.hostnames}"
+                    echo "$SL_USERNAME"
+                    echo "$SL_API_KEY"
+                    echo "$hostnames"
+                    echo "The build number is ${env.BUILD_NUMBER}"
+            }
+        }
+        stage('read') {
+           steps {
+               script {
+                   def data = readFile(file: 'username.txt')
+                   println(data)
+               }
+           }
+       }
+        stage('Build') {
+            steps {
+                echo 'Building..'
+                sh 'chmod +x scripts/jenkins-scripts.sh'
+                sh 'scripts/jenkins-scripts.sh'
+            }
+        }
+    }
+}
