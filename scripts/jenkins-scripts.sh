@@ -17,7 +17,9 @@ do
         # display $line or do somthing with $line
 	printf '%s\n' "$line"
 done <"$file"
+
 touch data2.txt
+
 hostfile="./data2.txt"
 while IFS= read -r line
 do
