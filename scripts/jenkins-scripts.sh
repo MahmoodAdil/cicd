@@ -11,8 +11,6 @@ b='World'
 c="${a} ${b}"
 echo "${c}"
 
-
-
 file="./data/data.txt"
 while IFS= read -r line
 do
