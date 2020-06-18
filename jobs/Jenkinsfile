@@ -1,12 +1,12 @@
 pipeline {
     agent any
     
-    parameters{
-            string(defaultValue: '', description: 'Softlayer username', name: 'SL_USERNAME', trim: false) 
-            password(defaultValue: '', description: 'Softlayer API key', name: 'SL_API_KEY')
-            booleanParam(defaultValue: false, description: 'Tell to the job when is being run on a VM or a Baremetal. By default unset means VSI -- Virtual Machine', name: 'SL_VIRTUAL_GUEST') 
-            file(description: 'hostnames file', name: 'hostnames')
-   }
+    parameters {
+        string(name: 'SL_USERNAME', defaultValue: '', description: 'Softlayer username')
+        password(name: 'SL_API_KEY', defaultValue: 'SECRET', description: 'Softlayer API key')
+        booleanParam(name: 'SL_VIRTUAL_GUEST', defaultValue: false, description: 'Tell to the job when is being run on a VM or a Baremetal. (By default unset means VSI -- Virtual Machine)')
+        file(name:'hostnames', description:'contains list of SL machines ids with their respective hostnames. e.g. 12344123 sl-hostname.ibm.com')
+    }
     stages {
         stage ('Initialize') {
             environment {
@@ -29,7 +29,7 @@ pipeline {
         stage('read') {
            steps {
                script {
-                   def data = readFile(file: 'username.txt')
+                   def data = readFile(file: './data/data.txt')
                    println(data)
                }
            }
