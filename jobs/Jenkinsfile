@@ -26,10 +26,20 @@ pipeline {
                     echo "The build number is ${env.BUILD_NUMBER}"
             }
         }
+        stage('write') {
+           steps {
+               script {
+                   def date = new Date()
+                   def data = "Hello World\nSecond line\n" + date
+                   writeFile(file: 'dataFromPipeline.txt', text: data)
+                   sh "ls -l"
+               }
+           }
+       }
         stage('read') {
            steps {
                script {
-                   def data = readFile(file: './data/data.txt')
+                   def data = readFile(file: './dataFromPipeline.txt')
                    println(data)
                }
            }
