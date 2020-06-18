@@ -11,8 +11,7 @@ b='World'
 c="${a} ${b}"
 echo "${c}"
 
-echo "list before reading data file"
-ls -ltR
+
 
 file="./data/data.txt"
 while IFS= read -r line
