@@ -26,6 +26,19 @@ pipeline {
                     echo "The build number is ${env.BUILD_NUMBER}"
             }
         }
+        stage('Upload File') {
+         steps {
+             script {
+                 
+                        def userFilePath = input message: 'Upload file', parameters: [file(name: 'userFile.txt', description: 'Upload only CSV file')]
+                        def fileContent = readFile "${userFilePath}"
+                        
+                         echo ("User's File Path is : ${userFilePath}")
+                         echo("File content is: ${fileContent}") 
+        }
+             echo "User's file uploaded"
+         }
+            
         stage('write') {
            steps {
                script {
