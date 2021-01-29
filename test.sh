@@ -7,4 +7,8 @@ _test_func(){
  cd fun2go
  echo 'after CD to fun2go'
  pwd
+ touch fun2testgo.txt
+ git add -A
+ git commit -m "great work done"
+ git push orgin master
 }
