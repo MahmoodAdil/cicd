@@ -4,4 +4,7 @@ _test_func(){
  echo 'Building from Git Repo'
  pwd
  mkdir fun2go
+ cd fun2go
+ echo 'after CD to fun2go'
+ pwd
 }
