@@ -10,6 +10,7 @@ _test_func(){
  touch fun2testgo.txt
  ls
  git status
+ git pull
  git add .
  git commit -m "great work done"
  git push origin master
